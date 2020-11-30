@@ -12,7 +12,9 @@ const __prod__ = process.env.NODE_ENV === "production"; // production boolean
 const PORT = process.env.PORT; // server port
 const URL_LENGTH = 5; // length of generated smols
 const DATABASE_URI = process.env.MONGODB_URI; // uri of database
-const SELF_URL = process.env.SELF_URL + ":" + PORT;
+const SELF_URL = __prod__
+  ? process.env.SELF_URL
+  : process.env.SELF_URL + ":" + PORT;
 
 // db connection
 const db = monk(DATABASE_URI, () => {
