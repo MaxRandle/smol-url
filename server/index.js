@@ -42,7 +42,7 @@ app.get("/:smol", async (req, res) => {
     if (smolUrl) {
       res.redirect(smolUrl.url);
     } else {
-      res.redirect(`${SELF_URL}/error`);
+      res.redirect(`${SELF_URL}error`);
     }
   } catch (error) {
     res.send(error.message);
@@ -70,7 +70,7 @@ app.post("/url", async (req, res, next) => {
     smol = smol.toLowerCase();
     const newSmolUrl = { url, smol };
     const created = await smolUrls.insert(newSmolUrl);
-    res.json({ ...created, link: SELF_URL + "/" + smol });
+    res.json({ ...created, link: SELF_URL + smol });
     // res.send();
   } catch (error) {
     // catch the duplicate smol error
