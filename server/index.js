@@ -55,7 +55,14 @@ const smolUrlSchema = yup.object().shape({
     .string()
     .trim()
     .matches(/[\w\-]/i),
-  url: yup.string().trim().url().required(),
+  url: yup
+    .string()
+    .trim()
+    .matches(
+      /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+      "invalid url"
+    )
+    .required(),
 });
 
 // create a smol url
