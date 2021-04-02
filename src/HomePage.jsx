@@ -184,6 +184,7 @@ const HomePage = () => {
       />
       <TextField
         className={clsx(classes.flexColItem)}
+        fullWidth
         variant="outlined"
         placeholder="choose a smol if you want"
         {...smolUrl}
